@@ -1,4 +1,4 @@
-# 📚 Data Warehouseing for an Online Learning Platform
+# 📚 Data Warehousing for an Online Learning Platform
 
 ## 📌 **Project Overview**  
 This **Online Learning Analytics Data Warehouse** is designed to **track student progress, analyze enrollments, and monitor instructor performance** using real-time data processing and cloud technologies.  
@@ -9,15 +9,16 @@ With this data warehouse, educators and decision-makers can gain **deep insights
 
 ## 🏢 **Architecture Overview**  
 
-🔹 **Data Sources:** Student enrollments, course completion logs and more (CSV files)  
+🔹 **Data Sources:** Student enrollments, course completion logs, and more (CSV files)  
 🔹 **Storage:** Amazon S3  
 🔹 **Ingestion:** Snowpipe with auto-ingest  
 🔹 **Data Warehouse:** Snowflake  
-🔹 **Transformation:** spark
+🔹 **Transformation:** Apache Spark  
+🔹 **Orchestration:** Apache Airflow  
 🔹 **Visualization:** Power BI  
 
 ### **📊 Data Flow**  
-![Architecture Diagram](https://raw.githubusercontent.com/umair7228/Data-Warehouseing-for-an-Online-Learning-Platform/main/Architecture-Diagram.png)
+![Architecture Diagram](https://github.com/umair7228/Data-Warehouseing-for-an-Online-Learning-Platform/blob/main/architectures/Architecture-Diagram.png)
 
 ---
 
@@ -25,7 +26,7 @@ With this data warehouse, educators and decision-makers can gain **deep insights
 
 👉 **Real-time Data Ingestion** – Automated Snowpipe triggers upon new file uploads  
 👉 **Optimized Data Modeling** – Implemented **Star Schema** for fast and efficient queries  
-👉 **Advanced ETL Pipeline** – Built using **dbt** for transformations and **Apache Airflow** for automation  
+👉 **Advanced ETL Pipeline** – Built using **spark** for transformations and **Apache Airflow** for automation  
 👉 **Interactive Power BI Dashboard** – Visual insights on **course completion rates, enrollments, and student performance**  
 
 ---
@@ -80,8 +81,8 @@ erDiagram
 
 ### **📈 Course Completion Rate**  
 **Definition:** Percentage of students who completed a course.  
-📊 **Chart Type:** pie Chart  
-🔖 **Fields:**  
+📊 **Chart Type:** Pie Chart  
+📌 **Fields:**  
 - **Category:** Course Name  
 - **Values:** COUNT(Completed = True)
 
@@ -90,7 +91,7 @@ erDiagram
 ### **📀 Enrollment Trends**  
 **Definition:** Track the number of enrollments over time.  
 📊 **Chart Type:** Line Chart  
-🔖 **Fields:**  
+📌 **Fields:**  
 - **X-Axis:** Enrollment Date  
 - **Y-Axis:** COUNT(Student ID)
   
@@ -99,11 +100,22 @@ erDiagram
 ### **🏅 Student Performance Analysis**  
 **Definition:** Analyzing student ratings and performance.  
 📊 **Chart Type:** Bar Chart  
-🔖 **Fields:**  
+📌 **Fields:**  
 - **X-Axis:** Student Name  
 - **Y-Axis:** Average Rating
   
 ![Pie Chart](https://drive.google.com/uc?export=view&id=1S8XVD0tykYrWfXCkj9OEJ-bRfsUO2Ptz)
+
+---
+
+## 🔧 **Automation with Apache Airflow**
+
+Apache Airflow orchestrates the **entire ETL workflow**, ensuring seamless execution of each step in the pipeline:
+
+🔹 **DAG Definition:** Defines the workflow for data ingestion, transformation, and loading.  
+🔹 **Task Dependencies:** Ensures proper execution order (e.g., processing before upload).  
+🔹 **Automated Scheduling:** Runs ETL tasks at scheduled intervals (e.g., daily).  
+🔹 **Monitoring & Logging:** Tracks task execution and errors via the Airflow UI.  
 
 ---
 
